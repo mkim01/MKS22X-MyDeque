@@ -6,7 +6,7 @@ public class MyDeque<E>{
   public MyDeque(){
     data = (E[])new Object[10];
     start = 0;
-    end - 0;
+    end = 0;
     size = 0 ;
    }
 
@@ -17,7 +17,7 @@ public class MyDeque<E>{
 
   public int size(){
     return this.size;
-   }
+  }
 
   private void resize(){
     if (size == data.length) {
@@ -67,10 +67,33 @@ public class MyDeque<E>{
 
 
   public void addFirst(E element){
-    if ()
-    start++;
+    if (end >= start){
+      if (end - start + 1 == data.length){
+       resize();
+      }
+      if (start == 0){
+       start = data.length - 1;
+      }
+      else{
+       start--;
+      }
+     data[start] = element;
+     size++;
+   }else{
+     if (start = end + 1){
+       resize();
+     }
+     if (start == 0){
+       start = data.length - 1;
+     }
+     else{
+       start--;
+     }
+     data[start] = element;
+     size++;
+    }
+  }
 
-   }
   public void addLast(E element){
     (if size >= initialCapacity){
       int=
@@ -79,14 +102,30 @@ public class MyDeque<E>{
    }
 
   public E removeFirst(){
+
   }
-  public E removeLast(){ }
+
+  public E removeLast(){
+
+  }
 
   public E getFirst(){
     return data[start];
   }
 
   public E getLast(){
-    return data[end]
+    return data[end];
+    }
   }
-}
+
+public class Calculator{
+      /*Evaluate a postfix expression stored in s.
+       *Assume valid postfix notation, separated by spaces.
+       */
+  public static double eval(String s){
+
+
+  }
+
+
+  }
