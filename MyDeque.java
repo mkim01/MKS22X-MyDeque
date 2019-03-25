@@ -19,14 +19,6 @@ public class MyDeque<E>{
     return this.size;
    }
 
-  public String toString(){
-    String output = "{";
-    for(int i = 0; i < data.length; i++){
-      output += data[i] + " ";
-    }
-    return output + "}";
-  }
-
   private void resize(){
     if (size == data.length) {
       int index = 0;
@@ -52,6 +44,28 @@ public class MyDeque<E>{
     }
   }
 
+    public String toString(){
+      String ans = "{";
+      if (start == end){
+        return "{}";
+      }
+      if (end > start){
+        for (int i = start; i < end; i++){
+          ans += data[i] + " ";
+        }
+      } else {
+        for (int i = start; i < size; i++){
+          ans += data[i] + " ";
+        }
+        for (int i = 0; i < end; i++){
+          ans += data[i] + " ";
+        }
+      }
+      ans += "}";
+      return ans;
+    }
+
+
   public void addFirst(E element){
     if ()
     start++;
@@ -67,6 +81,12 @@ public class MyDeque<E>{
   public E removeFirst(){
   }
   public E removeLast(){ }
-  public E getFirst(){ }
-  public E getLast(){ }
+
+  public E getFirst(){
+    return data[start];
+  }
+
+  public E getLast(){
+    return data[end]
+  }
 }
