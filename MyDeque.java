@@ -1,17 +1,19 @@
+import java.util.*;
+
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
 
-  @SuppressWarnings("unchecked");
+  @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
     start = 0;
     end = 0;
     size = 0 ;
    }
-
+   @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
-    data = new int[initialCapacity];
+    data = (E[])new Object[initialCapacity];
     start = 0;
   }
 
@@ -19,6 +21,7 @@ public class MyDeque<E>{
     return this.size;
   }
 
+  @SuppressWarnings("unchecked")
   private void resize(){
     if (size == data.length) {
       int index = 0;
@@ -26,7 +29,7 @@ public class MyDeque<E>{
       E[] holder = (E[])new Object[size * 2];
       while (start < data.length && !check) {
         if (start == end) {
-          done = true;
+          check = true;
         }
         holder[index] = data[start];
         start++;
@@ -54,7 +57,7 @@ public class MyDeque<E>{
           ans += data[i] + " ";
         }
       } else {
-        for (int i = start; i < size; i++){
+        for (int i = start; i < data.length; i++){
           ans += data[i] + " ";
         }
         for (int i = 0; i < end; i++){
@@ -64,9 +67,14 @@ public class MyDeque<E>{
       ans += "}";
       return ans;
     }
-
+/// [ a, b, c, d, e, f, g, h, i, j , k]
+///  start        end
 
   public void addFirst(E element){
+    if (element == null){
+      throw new NullPointerException();
+    }
+
     if (end >= start){
       if (end - start + 1 == data.length){
        resize();
@@ -80,7 +88,7 @@ public class MyDeque<E>{
      data[start] = element;
      size++;
    }else{
-     if (start = end + 1){
+     if (start == end + 1){
        resize();
      }
      if (start == 0){
@@ -95,37 +103,108 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
-    (if size >= initialCapacity){
-      int=
+    if (element == null){
+      throw new NullPointerException();
     }
-    end --;
+
+    if (end >= start){
+      if (end - start + 1 == data.length){
+        resize();
+      }
+      if (end == data.length - 1){
+        end = 0;
+      }
+      else{
+        end++;
+      }
+      data[end] = element;
+      size++;
+    }
+    else{
+      if(end + 1 == start){
+        resize();
+      }
+      if(end == data.length - 1){
+        end = 0;
+      }
+      else{
+        end++;
+      }
+      data[end] = element;
+      size++;
+    }
    }
 
   public E removeFirst(){
-
+    if(size == 0){
+      throw new NoSuchElementException();
+    }
+    E value = data[start];
+    if (start != data.length - 1){
+      start++;
+    }
+    else{
+      start = 0;
+    }
+    size--;
+    return value;
   }
 
   public E removeLast(){
-
+    if(size == 0){
+      throw new NoSuchElementException();
+    }
+    E value = data[end];
+    if (end != 0 && size != 1){
+      end--;
+    }
+    else{
+      if (size != 1){
+        end = data.length - 1;
+      }
+    }
+    size --;
+    return value;
   }
 
   public E getFirst(){
+    if(size == 0){
+      throw new NoSuchElementException();
+    }
     return data[start];
   }
 
   public E getLast(){
+    if(size == 0){
+      throw new NoSuchElementException();
+    }
     return data[end];
     }
+
+  public static void main(String[] args){
+    MyDeque data = new MyDeque(5);
+    data.addFirst(3);
+    System.out.println(data);
+    data.removeLast();
+    System.out.println(data);
+  }
   }
 
-public class Calculator{
-      /*Evaluate a postfix expression stored in s.
-       *Assume valid postfix notation, separated by spaces.
-       */
-  public static double eval(String s){
-
-
-  }
-
-
-  }
+// public class Calculator{
+//       /*Evaluate a postfix expression stored in s.
+//        *Assume valid postfix notation, separated by spaces.
+//        */
+//   ArrayList<Double> stack = new ArrayList<Double>;
+//   public static double eval(String s){
+//     String[] word = s.split(" ");
+//     for (int i = 0; i < s.length; i++){
+//       stack.addFirst(word[i]);
+//     }
+//     for (int i = 0; i < s.length; i++){
+//       if (parseInt(word[i])) ==
+//      int n = parseInt(word[i]);
+//     }
+//   }
+//   public static boolean check(){
+//   }
+//   }
