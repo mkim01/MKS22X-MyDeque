@@ -15,6 +15,8 @@ public class MyDeque<E>{
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
     start = 0;
+    end = 0;
+    size = 0 ;
   }
 
   public int size(){
@@ -74,7 +76,6 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-
     if (end >= start){
       if (end - start + 1 == data.length){
        resize();
@@ -106,7 +107,6 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-
     if (end >= start){
       if (end - start + 1 == data.length){
         resize();
@@ -182,29 +182,40 @@ public class MyDeque<E>{
     }
 
   public static void main(String[] args){
-    MyDeque data = new MyDeque(5);
-    data.addFirst(3);
+    MyDeque data = new MyDeque();
+    data.addLast(0);
     System.out.println(data);
-    data.removeLast();
+    data.addFirst(0);
     System.out.println(data);
+    data.addFirst(5);
+    System.out.println(data);
+    data.addFirst(5);
+    System.out.println(data);
+    // data.addLast(5);
+    // System.out.println(data);
+    // data.addFirst(3);
+    // System.out.println(data);
+
+    // data.addFirst(5);
+    // System.out.println(data);
+    // data.removeLast();
+    // System.out.println(data);
   }
   }
 
-// public class Calculator{
-//       /*Evaluate a postfix expression stored in s.
-//        *Assume valid postfix notation, separated by spaces.
-//        */
-//   ArrayList<Double> stack = new ArrayList<Double>;
-//   public static double eval(String s){
-//     String[] word = s.split(" ");
-//     for (int i = 0; i < s.length; i++){
-//       stack.addFirst(word[i]);
-//     }
-//     for (int i = 0; i < s.length; i++){
-//       if (parseInt(word[i])) ==
-//      int n = parseInt(word[i]);
-//     }
-//   }
-//   public static boolean check(){
-//   }
-//   }
+public class Calculator{
+      /*Evaluate a postfix expression stored in s.
+       *Assume valid postfix notation, separated by spaces.
+       */
+  public static double eval(String s){
+    ArrayList<Double> stack = new ArrayList<Double>;
+    String[] word = s.split(" ");
+    for (int i = 0; i < s.length; i++){
+      stack.addLast(Double.parseDouble(word[i]));
+      }
+    }
+
+    
+  public static boolean check(){
+  }
+}
