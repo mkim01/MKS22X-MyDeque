@@ -11,7 +11,7 @@ public class MyDeque<E>{
     end = 0;
     size = 0 ;
    }
-   @SuppressWarnings("unchecked")
+  @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
     start = 0;
@@ -107,33 +107,35 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-    if (end >= start){
-      if (end - start + 1 == data.length){
-        resize();
-      }
+    if (end - start + 1 == data.length){
+      resize();
+    }
+    if (size != 0){
       if (end == data.length - 1){
         end = 0;
       }
       else{
         end++;
       }
-      data[end] = element;
-      size++;
     }
-    else{
-      if(end + 1 == start){
-        resize();
-      }
-      if(end == data.length - 1){
-        end = 0;
-      }
-      else{
-        end++;
-      }
-      data[end] = element;
-      size++;
+    data[end] = element;
+    size++;
     }
-   }
+//   ****ES**
+    //
+    // else{
+    //   if(end + 1 == start){
+    //     resize();
+    //   }
+    //   // if(end == ){
+    //   //   end = ;
+    //   // }
+    //   else{
+    //     end++;
+    //   }
+    //   data[end] = element;
+    //   size++;
+    // }
 
   public E removeFirst(){
     if(size == 0){
@@ -182,12 +184,13 @@ public class MyDeque<E>{
     }
 
   public static void main(String[] args){
-    MyDeque data = new MyDeque();
-    data.addLast(0);
+    MyDeque data = new MyDeque(5);
+    System.out.println(data);
+    data.addLast(1);
     System.out.println(data);
     data.addFirst(0);
     System.out.println(data);
-    data.addFirst(5);
+    data.addFirst(2);
     System.out.println(data);
     data.addFirst(5);
     System.out.println(data);
@@ -203,19 +206,23 @@ public class MyDeque<E>{
   }
   }
 
-public class Calculator{
-      /*Evaluate a postfix expression stored in s.
-       *Assume valid postfix notation, separated by spaces.
-       */
-  public static double eval(String s){
-    ArrayList<Double> stack = new ArrayList<Double>;
-    String[] word = s.split(" ");
-    for (int i = 0; i < s.length; i++){
-      stack.addLast(Double.parseDouble(word[i]));
-      }
-    }
-
-    
-  public static boolean check(){
-  }
-}
+// public class Calculator{
+//       /*Evaluate a postfix expression stored in s.
+//        *Assume valid postfix notation, separated by spaces.
+//        */
+//   public static double eval(String s){
+//     ArrayList<Double> stack = new ArrayList<Double>;
+//     String[] word = s.split(" ");
+//     for (int i = 0; i < s.length; i++){
+//       if (ary[i].equals("+") || ary[i].equals("+") || ary[i].equals("+")|| ary[i].equals("+")){
+//         stack.addLast(Double.parseDouble(word[i]));
+//         }
+//       }
+//     }
+//
+//   public static void perform(String s, MyDeque<Double> Stack){
+//
+//   }
+//
+//
+// }
