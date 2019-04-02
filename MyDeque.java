@@ -120,7 +120,7 @@ public class MyDeque<E>{
     }
     data[end] = element;
     size++;
-    }
+  }
 //   ****ES**
     //
     // else{
