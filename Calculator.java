@@ -7,9 +7,9 @@ public class Calculator{
     String[] exp = s.split(" ");
     MyDeque<Double> stack = new MyDeque<Double>();
     for (int i = 0; i < exp.length; i++){
-      if (exp[i].equals("+") || exp[i].equals("-") || exp[i].equals("/")|| exp[i].equals("%")){
-        Double operator = Double.parseDouble(exp[i]);
-        stack.addLast(operator);
+      if (!(exp[i].equals("+") || exp[i].equals("-") || exp[i].equals("/")|| exp[i].equals("%"))){
+        Double number = Double.parseDouble(exp[i]);
+        stack.addLast(number);
       }
       else{
         if(exp[i].equals("+")){
@@ -40,12 +40,19 @@ public class Calculator{
           stack.removeLast();
           stack.addLast(s1 % s2);
           }
+        else{
+          double s2 = stack.getLast();
+          stack.removeLast();
+          double s1 = stack.getLast();
+          stack.removeLast();
+          stack.addLast(s1 * s2);
+          }
         }
       }
       return stack.getLast();
     }
 
   public static void main(String[] args){
-    System.out.println(eval("5 6.0 +"));
+    System.out.println(eval("10 3 +"));
   }
 }
