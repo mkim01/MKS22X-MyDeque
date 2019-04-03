@@ -69,7 +69,7 @@ public class MyDeque<E>{
           ans += data[i] + " ";
         }
       }
-      return ans;
+      return ans + "}";
     }
 /// [ a, b, c, d, e, f, g, h, i, j , k]
 ///  start        end
@@ -117,6 +117,7 @@ public class MyDeque<E>{
         end = 0;
       }
       else{
+        // data[end] = element;
         end++;
       }
     }
@@ -159,15 +160,19 @@ public class MyDeque<E>{
       throw new NoSuchElementException();
     }
     E value = data[end];
-    if (end != 0 && size != 1){
+    if (end != 0){
       end--;
     }
     else{
-      if (size != 1){
+      // if (size != 0){
         end = data.length - 1;
       }
-    }
-    size --;
+      size--;
+      if (size ==0){
+        start = 0;
+        end = 0;
+      }
+
     return value;
   }
 
