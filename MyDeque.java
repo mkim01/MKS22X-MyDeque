@@ -46,6 +46,8 @@ public class MyDeque<E>{
         }
       }
       data = holder;
+      start = 0 ;
+      end = size - 1;
     }
   }
 
@@ -58,7 +60,8 @@ public class MyDeque<E>{
         for (int i = start; i < end; i++){
           ans += data[i] + " ";
         }
-      } else {
+      }
+      else {
         for (int i = start; i < data.length; i++){
           ans += data[i] + " ";
         }
@@ -66,7 +69,6 @@ public class MyDeque<E>{
           ans += data[i] + " ";
         }
       }
-      ans += "}";
       return ans;
     }
 /// [ a, b, c, d, e, f, g, h, i, j , k]
