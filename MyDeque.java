@@ -51,32 +51,37 @@ public class MyDeque<E>{
     }
   }
 
-    public String toString(){
-      String ans = "{";
-      if (start == end){
-        return "{}";
-      }
-      if (end > start){
-        for (int i = start; i < end; i++){
-          ans += data[i] + " ";
+  public String toString(){
+        String ans = "{";
+        if (start == end){
+          return "{}";
         }
-      }
-      else {
-        for (int i = start; i < data.length; i++){
-          ans += data[i] + " ";
+        if (end > start){
+          for (int i = start; i < end; i++){
+            ans += data[i] + " ";
+          }
         }
-        for (int i = 0; i < end; i++){
-          ans += data[i] + " ";
+        else {
+          for (int i = start; i < data.length; i++){
+            ans += data[i] + " ";
+          }
+          for (int i = 0; i < end; i++){
+            ans += data[i] + " ";
+          }
         }
+        return ans + "}";
       }
-      return ans + "}";
-    }
 /// [ a, b, c, d, e, f, g, h, i, j , k]
 ///  start        end
 
   public void addFirst(E element){
     if (element == null){
       throw new NullPointerException();
+    }
+    if (size == 0){
+      data[0] = element;
+      start = 0;
+      end = 0;
     }
     if (end >= start){
       if (end - start + 1 == data.length){
