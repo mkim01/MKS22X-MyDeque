@@ -9,7 +9,7 @@ public class MyDeque<E>{
     data = (E[])new Object[10];
     start = 0;
     end = 0;
-    size = 0 ;
+    size = 0;
    }
   @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
@@ -20,7 +20,7 @@ public class MyDeque<E>{
   }
 
   public int size(){
-    return this.size;
+    return size;
   }
 
   @SuppressWarnings("unchecked")
@@ -28,7 +28,7 @@ public class MyDeque<E>{
     if (size == data.length) {
       int index = 0;
       boolean check = false;
-      E[] holder = (E[])new Object[size * 2];
+      E[] holder = (E[])new Object[data.length * 2 + 1];
       while (start < data.length && !check) {
         if (start == end) {
           check = true;
@@ -103,19 +103,18 @@ public class MyDeque<E>{
     if (element == null){
       throw new NullPointerException();
     }
-    if (end - start + 1 == data.length){
+    if (size == data.length){
       resize();
     }
-    if (size != 0){
-      if (end == data.length - 1){
-        end = 0;
+    if (end == data.length){
+      data[0] = element;
+      end = 1;
       }
       else{
-        // data[end] = element;
+        data[end] = element;
         end++;
       }
-    }
-    data[end] = element;
+    // data[end] = element;
     size++;
   }
 //   ****ES**
@@ -166,7 +165,6 @@ public class MyDeque<E>{
         start = 0;
         end = 0;
       }
-
     return value;
   }
 
@@ -181,7 +179,7 @@ public class MyDeque<E>{
     if(size == 0){
       throw new NoSuchElementException();
     }
-    return data[end];
+    return data[end ];
     }
 
   public static void main(String[] args){
@@ -189,12 +187,12 @@ public class MyDeque<E>{
     System.out.println(data);
     data.addLast(1);
     System.out.println(data);
-    data.addFirst(0);
-    System.out.println(data);
-    data.addFirst(2);
-    System.out.println(data);
-    data.addFirst(5);
-    System.out.println(data);
+    // data.addFirst(0);
+    // System.out.println(data);
+    // data.addFirst(2);
+    // System.out.println(data);
+    // data.addFirst(5);
+    // System.out.println(data);
     // data.addLast(5);
     // System.out.println(data);
     // data.addFirst(3);
